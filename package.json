@@ -1,0 +1,12 @@
+{
+  "name": "proverload",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Progressive overload tracker for Scriptable — logging app + home screen widget in one script",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "node build.js && node dev/serve.js",
+    "test": "node build.js && node test/run.js && node test/ui.js && node test/native.js",
+    "deploy": "node build.js && cp dist/Proverload.js \"$HOME/Library/Mobile Documents/iCloud~dk~simonbs~Scriptable/Documents/Proverload.js\" && echo 'copied to iCloud Drive/Scriptable — it will appear on your phone shortly'"
+  }
+}

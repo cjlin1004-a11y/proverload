@@ -1,0 +1,5 @@
+.DS_Store
+node_modules/
+
+# Unrelated reference clone (yaylinda/scriptable) — not part of this project.
+scriptable/

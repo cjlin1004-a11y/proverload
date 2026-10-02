@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<title>Proverload</title>
+<style>/*__CSS__*/</style>
+</head>
+<body>
+
+<header>
+  <div class="h-row">
+    <div class="grow">
+      <h1 id="title">Proverload</h1>
+      <div class="sub" id="subtitle">progressive overload, tracked</div>
+    </div>
+    <div id="head-action"></div>
+  </div>
+</header>
+
+<main id="main"><div class="empty"><b>Loading Proverload…</b>If this doesn't change in a few seconds, something went wrong — see below.</div></main>
+
+<nav>
+  <button data-tab="log" class="on">
+    <svg viewBox="0 0 24 24"><path d="M6.5 7.5v9M17.5 7.5v9M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/></svg>
+    Log
+  </button>
+  <button data-tab="week">
+    <svg viewBox="0 0 24 24"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg>
+    Week
+  </button>
+  <button data-tab="lifts">
+    <svg viewBox="0 0 24 24"><path d="M3 17l5-6 4 3 5-8 4 5"/><circle cx="8" cy="11" r="1"/></svg>
+    Lifts
+  </button>
+  <button data-tab="more">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.6 1.6 0 00-2.7 1.1V21a2 2 0 11-4 0v-.1A1.6 1.6 0 007.9 19.4l-.1.1a2 2 0 11-2.8-2.8l.1-.1A1.6 1.6 0 003 14a2 2 0 110-4h.1A1.6 1.6 0 004.6 7.9l-.1-.1a2 2 0 112.8-2.8l.1.1A1.6 1.6 0 0010 3.6V3a2 2 0 114 0v.1a1.6 1.6 0 002.7 1.1l.1-.1a2 2 0 112.8 2.8l-.1.1a1.6 1.6 0 001.1 2.7H21a2 2 0 110 4h-.1a1.6 1.6 0 00-1.5 1z"/></svg>
+    More
+  </button>
+</nav>
+
+<div id="sheet-root"></div>
+<div id="boot-error" style="display:none;position:fixed;left:12px;right:12px;bottom:76px;
+  background:#2A1010;border:1px solid #7A2A2A;color:#FFD5D5;border-radius:12px;
+  padding:12px 14px;font:12px/1.5 -apple-system,sans-serif;z-index:999;
+  max-height:45vh;overflow:auto;white-space:pre-wrap;"></div>
+
+<script>
+  // Registered before core/ui load so a crash anywhere still becomes visible
+  // text instead of a blank screen.
+  (function () {
+    function show(label, detail) {
+      var box = document.getElementById('boot-error');
+      if (!box) return;
+      box.style.display = 'block';
+      box.textContent += (box.textContent ? '\n\n' : '') + label + '\n' + detail;
+    }
+    window.onerror = function (msg, src, line, col, err) {
+      show('Script error', msg + '\n' + (src || '') + ':' + line + ':' + col +
+        (err && err.stack ? '\n' + err.stack : ''));
+    };
+    window.addEventListener('unhandledrejection', function (ev) {
+      var r = ev.reason;
+      show('Unhandled promise rejection', (r && (r.stack || r.message)) || String(r));
+    });
+  })();
+</script>
+<script>/*__CORE__*/</script>
+<script>/*__UI__*/</script>
+</body>
+</html>
